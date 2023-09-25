@@ -1,7 +1,11 @@
 #include "orderSystem.cpp"
-#include<iostream>
+
 
 int main(){
+    User admin("adminUserP","adminPasswordP","admin");
+    admin.pushUser(admin);
+    //admin.printVector();
+    
     OrderSystem system;
     system.mainMenu();
     return 0;

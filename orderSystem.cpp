@@ -56,6 +56,12 @@ void OrderSystem::adminMenu()
     std::string password;
     std::cin>>password;
     std::cout<<std::endl;
+    User newUser(password,username,"admin");
+    if(newUser.getUsernames().find(username)!=newUser.getUsernames().end()){
+
+        adminMenu();
+    }
+    newUser.adminLogin(username,password);
 }
 
 void OrderSystem::customerMenu()
