@@ -7,7 +7,7 @@
 class User {
     public:
         User(const std::string &username, const std::string &password, const std::string &role);
-        void adminLogin(const std::string& username,const std::string& password);
+        bool adminLogin(const std::string& username,const std::string& password);
         void customerLogin(const std::string& username,const std::string& password);
         void setRole(std::string role);
         std::string getUsername() const;
@@ -21,7 +21,6 @@ class User {
         User operator[](int index);
         bool operator==(const User& user);
         friend std::ostream& operator<<(std::ostream& out, const User& user);
-        
         void printVector();
         void pushUser(const User& user);
     private:

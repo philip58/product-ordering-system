@@ -1,9 +1,10 @@
 #include "orderSystem.h"
-#include "user.cpp"
 
 OrderSystem::OrderSystem()
 {
-    number_of_users = 0;
+    User admin("adminUserP","adminPasswordP","admin");
+    admin.pushUser(admin);
+    number_of_users = 1;
 }
 
 //main menu page
@@ -57,11 +58,12 @@ void OrderSystem::adminMenu()
     std::cin>>password;
     std::cout<<std::endl;
     User newUser(password,username,"admin");
-    if(newUser.getUsernames().find(username)!=newUser.getUsernames().end()){
-
-        adminMenu();
-    }
-    newUser.adminLogin(username,password);
+    newUser.printVector();
+    if(newUser.adminLogin(username,password)){
+        adminAuthorizedPage();
+        } else {
+            adminMenu();
+        }
 }
 
 void OrderSystem::customerMenu()
@@ -95,3 +97,29 @@ int OrderSystem::getNumberOfUsers()
     return number_of_users;
 }
 
+void OrderSystem::adminAuthorizedPage()
+{
+    char input;
+        std::cout<<"A) View An Item                "<<std::endl<<std::endl;
+        std::cout<<"B) Add An Item                 "<<std::endl<<std::endl;
+        std::cout<<"C) Edit An Item                "<<std::endl<<std::endl;
+        std::cout<<"D) Delete An Item              "<<std::endl<<std::endl;
+        std::cout<<"E) Return To Main Menu         "<<std::endl<<std::endl;
+        std::cout<<"F) Exit                        "<<std::endl<<std::endl;
+        std::cout<<"-------------------------------------"<<std::endl<<std::endl;
+        std::cout<<"Please Enter A Choice: "<<std::endl;
+        std::cin>>input;
+        switch (input)
+        {
+        case 'E':
+            mainMenu();
+            break;
+        case 'F':
+            exit();
+            break;
+        
+        default:
+            std::cout<<" Unaccepted Input, Please Try Again! "<<std::endl<<std::endl;
+            adminAuthorizedPage();
+        }
+}

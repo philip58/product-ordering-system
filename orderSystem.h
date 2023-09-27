@@ -4,6 +4,7 @@
 #include<string>
 #include<vector>
 #include<unordered_map>
+#include "user.cpp"
 
 class OrderSystem 
 {
@@ -15,6 +16,7 @@ class OrderSystem
         void exit();
         void login();
         int getNumberOfUsers();
+        void adminAuthorizedPage();
     private:
         std::string product_name_;
         int product_number_;

@@ -10,12 +10,15 @@ User::User(const std::string &username, const std::string &password, const std::
     usernames_.insert(username_);
 }
 
-void User::adminLogin(const std::string &username, const std::string &password)
+bool User::adminLogin(const std::string &username, const std::string &password)
 {
     if(username=="adminUserP" && password == "adminPasswordP" ){
         std::cout<<"-------------------------------------"<<std::endl<<std::endl;
         std::cout<<"            Welcome Admin!           "<<std::endl<<std::endl;
         std::cout<<"-------------------------------------"<<std::endl<<std::endl;
+        return true;
+    } else {
+        return false;
     }
 }
 
@@ -25,7 +28,7 @@ void User::customerLogin(const std::string &username, const std::string &passwor
         std::cout<<"-------------------------------------"<<std::endl<<std::endl;
         std::cout<<"            Welcome Customer!           "<<std::endl<<std::endl;
         std::cout<<"-------------------------------------"<<std::endl<<std::endl;
-    }
+    } 
 }
 
 void User::setRole(std::string role)
@@ -95,7 +98,7 @@ std::ostream& operator<<(std::ostream& out, const User& user)
 void User::printVector()
 {
     for(auto item : users_){
-        std::cout<<item;
+        std::cout<<item<<std::endl;
     }
 }
 
